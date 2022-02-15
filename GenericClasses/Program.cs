@@ -15,7 +15,6 @@ namespace GenericClasses
 
 
 
-            String str = new String('E',25);
 
 
 
