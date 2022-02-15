@@ -15,7 +15,7 @@ namespace GenericClasses
 
 
 
-
+            String str = new String('E',25);
 
 
 
@@ -24,13 +24,16 @@ namespace GenericClasses
             Console.ReadLine();
         }
     }
+    interface IEntity
+    {
 
-    class Product
+    }
+    class Product:IEntity
     {
 
     }
 
-    class Customer
+    class Customer:IEntity
     {
 
     }
@@ -101,8 +104,10 @@ namespace GenericClasses
         }
     }
 
-    interface IRepository<T>
+    interface IRepository<T> where T: class,IEntity,new()
     {
+        //Class means referance type and new () can be only created new object if we only use class that we could declare like that ICustomerDal:IRepository<string> cause string is referance type if we use new () so we cannot create string as new and all classes should be implemented from IEntity and new () always should be in the end
+
         List<T> GetAll();
         T Get(int id);
         void Add(T entity);
